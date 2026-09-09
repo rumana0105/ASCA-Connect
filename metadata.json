@@ -1,0 +1,6 @@
+{
+  "name": "ASCA - Fair Donation Allocation",
+  "description": "Adaptive Shortfall Credit Allocation (ASCA) for fair sequential donation distribution among nonprofit organizations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
