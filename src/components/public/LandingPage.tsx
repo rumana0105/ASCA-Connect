@@ -17,7 +17,12 @@ import {
   Truck, 
   FlaskConical,
   LogIn,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Cpu,
+  Calculator,
+  Code2,
+  Recycle,
+  Layers
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -850,6 +855,126 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, openRoleMo
         </div>
       </section>
 
+      {/* 6.5 ALGORITHM & PSEUDOCODE EVALUATION SHOWCASE */}
+      <section id="algorithms-showcase" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-stone-200 shadow-sm space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-stone-150">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                MCA Algorithm Defense & Formulations
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight mt-3">
+                ASCA Algorithms & Working Calculations
+              </h2>
+              <p className="text-base text-stone-600 mt-2 max-w-2xl leading-relaxed">
+                Explore the formal pseudocode, mathematical derivations, input validations, and dynamic calculations powering the ASCA reverse logistics platform.
+              </p>
+            </div>
+
+            <button
+              id="btn-open-algorithm-workbench"
+              onClick={() => onNavigate('/algorithms')}
+              className="px-6 py-3.5 rounded-xl text-sm font-semibold bg-emerald-800 hover:bg-emerald-900 text-white shadow-md hover:shadow-lg transition-all flex items-center gap-2 group cursor-pointer shrink-0"
+            >
+              <Cpu className="w-4 h-4 text-emerald-300" />
+              <span>Launch Algorithm Workbench</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          {/* 4 Interactive Algorithm Quick Cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div 
+              onClick={() => onNavigate('/algorithms')}
+              className="p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-emerald-400 hover:bg-emerald-50/30 transition-all cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 uppercase">
+                  Algo A
+                </span>
+                <ShieldCheck className="w-4 h-4 text-emerald-700" />
+              </div>
+              <h4 className="text-sm font-bold text-stone-900 group-hover:text-emerald-900 transition-colors">
+                Donation Eligibility
+              </h4>
+              <p className="text-xs text-stone-500 mt-1.5 leading-relaxed">
+                Quantitative validation, hygiene filtering, and vehicle dispatch radius calculation.
+              </p>
+              <div className="mt-3 flex items-center gap-1 text-[11px] font-semibold text-emerald-800 group-hover:underline">
+                <span>View Pseudocode & Math</span>
+                <ArrowRight className="w-3 h-3" />
+              </div>
+            </div>
+
+            <div 
+              onClick={() => onNavigate('/algorithms')}
+              className="p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-emerald-400 hover:bg-emerald-50/30 transition-all cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-blue-100 text-blue-800 uppercase">
+                  Algo B
+                </span>
+                <Recycle className="w-4 h-4 text-blue-700" />
+              </div>
+              <h4 className="text-sm font-bold text-stone-900 group-hover:text-blue-900 transition-colors">
+                Material Classification
+              </h4>
+              <p className="text-xs text-stone-500 mt-1.5 leading-relaxed">
+                Routes clothes & books to direct reuse, mending, fibre recycling, or bio-quarantine.
+              </p>
+              <div className="mt-3 flex items-center gap-1 text-[11px] font-semibold text-blue-800 group-hover:underline">
+                <span>View Pseudocode & Math</span>
+                <ArrowRight className="w-3 h-3" />
+              </div>
+            </div>
+
+            <div 
+              onClick={() => onNavigate('/algorithms')}
+              className="p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-emerald-400 hover:bg-emerald-50/30 transition-all cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-900 uppercase">
+                  Algo C
+                </span>
+                <Truck className="w-4 h-4 text-amber-700" />
+              </div>
+              <h4 className="text-sm font-bold text-stone-900 group-hover:text-amber-900 transition-colors">
+                Collection Progress
+              </h4>
+              <p className="text-xs text-stone-500 mt-1.5 leading-relaxed">
+                Dynamic target fulfillment, remaining quantity calculation, and vehicle payload tracking.
+              </p>
+              <div className="mt-3 flex items-center gap-1 text-[11px] font-semibold text-amber-800 group-hover:underline">
+                <span>View Pseudocode & Math</span>
+                <ArrowRight className="w-3 h-3" />
+              </div>
+            </div>
+
+            <div 
+              onClick={() => onNavigate('/algorithms')}
+              className="p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-emerald-400 hover:bg-emerald-50/30 transition-all cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-teal-100 text-teal-900 uppercase">
+                  Algo D
+                </span>
+                <Layers className="w-4 h-4 text-teal-700" />
+              </div>
+              <h4 className="text-sm font-bold text-stone-900 group-hover:text-teal-900 transition-colors">
+                Circular Material Impact
+              </h4>
+              <p className="text-xs text-stone-500 mt-1.5 leading-relaxed">
+                Mass balance conservation, landfill diversion rate, and reuse/recycling partition.
+              </p>
+              <div className="mt-3 flex items-center gap-1 text-[11px] font-semibold text-teal-800 group-hover:underline">
+                <span>View Pseudocode & Math</span>
+                <ArrowRight className="w-3 h-3" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 7. CALL TO ACTION SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-emerald-900 text-white rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-xl">
@@ -893,6 +1018,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, openRoleMo
             <span>Adaptive Shortfall Credit Allocation for Fair Sequential Donation Distribution</span>
           </div>
           <div className="flex items-center gap-4">
+            <button
+              id="footer-algorithms"
+              onClick={() => onNavigate('/algorithms')}
+              className="text-stone-700 hover:text-emerald-700 font-medium"
+            >
+              Algorithm & Pseudocode
+            </button>
             <button
               onClick={() => onNavigate('/research-lab')}
               className="text-stone-700 hover:text-emerald-700 font-medium"

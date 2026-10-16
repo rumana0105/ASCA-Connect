@@ -16,7 +16,8 @@ import {
   Sliders, 
   BarChart3, 
   Sparkles,
-  ChevronRight
+  ChevronRight,
+  Cpu
 } from 'lucide-react';
 import { 
   ResponsiveContainer, 
@@ -31,7 +32,7 @@ import {
   CartesianGrid 
 } from 'recharts';
 
-export const ResearchLab: React.FC = () => {
+export const ResearchLab: React.FC<{ onNavigate?: (path: string) => void; onNavigateHome?: () => void }> = ({ onNavigate }) => {
   // Simulation Controls
   const [numNgos, setNumNgos] = useState<number>(20);
   const [numRounds, setNumRounds] = useState<number>(50);
@@ -672,6 +673,27 @@ export const ResearchLab: React.FC = () => {
               <p className="text-stone-500 text-[11px] font-sans">
                 Evaluated over satisfaction ratios x_i = A(i) / D(i).
               </p>
+            </div>
+
+            {/* Direct Link to Algorithm Workbench */}
+            <div className="p-6 rounded-2xl bg-emerald-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm mt-4">
+              <div className="space-y-1 text-left">
+                <h5 className="font-bold text-sm text-stone-50 flex items-center gap-2">
+                  <Cpu className="w-4 h-4 text-emerald-300" />
+                  <span>Looking for Algorithm Pseudocode & Working Calculations?</span>
+                </h5>
+                <p className="text-xs text-emerald-200">
+                  Access the Algorithm & Pseudocode Workbench with executable calculations for eligibility, classification, collection progress, diversion, and ASCA priority.
+                </p>
+              </div>
+              {onNavigate && (
+                <button
+                  onClick={() => onNavigate('/algorithms')}
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-white text-emerald-950 hover:bg-emerald-50 transition-all shrink-0 cursor-pointer shadow-xs"
+                >
+                  Open Algorithm Workbench
+                </button>
+              )}
             </div>
           </div>
         </div>

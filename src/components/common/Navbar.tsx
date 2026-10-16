@@ -10,7 +10,8 @@ import {
   ShieldCheck,
   Menu,
   X,
-  Sparkles
+  Sparkles,
+  Cpu
 } from 'lucide-react';
 import { AppRoute } from '../../App';
 
@@ -61,10 +62,24 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Direct Link to Algorithm & Pseudocode */}
+            <button
+              id="topbar-algorithms"
+              onClick={() => onNavigate('/algorithms')}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-medium transition-colors cursor-pointer ${
+                currentRoute === '/algorithms'
+                  ? 'bg-emerald-600 text-white font-semibold shadow-xs'
+                  : 'bg-stone-800 text-stone-300 hover:text-white border border-stone-700'
+              }`}
+            >
+              <Cpu className="w-3 h-3 text-emerald-400" />
+              <span>Algorithm & Pseudocode</span>
+            </button>
+
             {/* Direct Link to Academic Research Lab */}
             <button
               onClick={() => onNavigate('/research-lab')}
-              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-medium transition-colors ${
+              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-medium transition-colors cursor-pointer ${
                 currentRoute === '/research-lab'
                   ? 'bg-emerald-600 text-white font-semibold shadow-xs'
                   : 'bg-stone-800 text-stone-300 hover:text-white border border-stone-700'
@@ -170,6 +185,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="px-3 py-2 rounded-lg text-sm font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition-colors cursor-pointer"
             >
               Impact
+            </button>
+
+            <button
+              id="nav-algorithms"
+              onClick={() => onNavigate('/algorithms')}
+              className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition-colors cursor-pointer ${
+                currentRoute === '/algorithms'
+                  ? 'bg-stone-900 text-emerald-400 font-semibold shadow-xs'
+                  : 'text-stone-700 hover:bg-stone-100'
+              }`}
+            >
+              <Cpu className="w-4 h-4 text-emerald-600" />
+              <span>Algorithm & Pseudocode</span>
             </button>
 
             <button
@@ -311,10 +339,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             Home
           </button>
           <button
-            onClick={() => { onNavigate('/research-lab'); setMobileMenuOpen(false); }}
-            className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 hover:bg-emerald-50"
+            onClick={() => { onNavigate('/algorithms'); setMobileMenuOpen(false); }}
+            className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 hover:bg-emerald-50 flex items-center gap-2"
           >
-            ASCA Research Lab
+            <Cpu className="w-4 h-4 text-emerald-600" />
+            <span>Algorithm & Pseudocode</span>
+          </button>
+          <button
+            onClick={() => { onNavigate('/research-lab'); setMobileMenuOpen(false); }}
+            className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 hover:bg-emerald-50 flex items-center gap-2"
+          >
+            <FlaskConical className="w-4 h-4 text-emerald-600" />
+            <span>ASCA Research Lab</span>
           </button>
           
           {currentUser ? (

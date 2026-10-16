@@ -9,6 +9,7 @@ import { ResearchLab } from './components/research/ResearchLab';
 import { DonorLogin } from './components/auth/DonorLogin';
 import { NgoLogin } from './components/auth/NgoLogin';
 import { AdminLogin } from './components/auth/AdminLogin';
+import { AlgorithmWorkbench } from './components/algorithms/AlgorithmWorkbench';
 import { RoleSelectModal } from './components/auth/RoleSelectModal';
 import { ShieldAlert, ArrowRight } from 'lucide-react';
 
@@ -20,7 +21,8 @@ export type AppRoute =
   | '/donor/dashboard' 
   | '/ngo/dashboard' 
   | '/admin/dashboard' 
-  | '/research-lab';
+  | '/research-lab'
+  | '/algorithms';
 
 const MainLayout: React.FC = () => {
   const { currentRole, currentUser } = useApp();
@@ -36,7 +38,8 @@ const MainLayout: React.FC = () => {
       '/donor/dashboard',
       '/ngo/dashboard',
       '/admin/dashboard',
-      '/research-lab'
+      '/research-lab',
+      '/algorithms'
     ];
     if (validRoutes.includes(path as AppRoute)) {
       return path as AppRoute;
@@ -58,7 +61,8 @@ const MainLayout: React.FC = () => {
         '/donor/dashboard',
         '/ngo/dashboard',
         '/admin/dashboard',
-        '/research-lab'
+        '/research-lab',
+        '/algorithms'
       ];
       if (validRoutes.includes(path)) {
         setCurrentRoute(path);
@@ -82,6 +86,7 @@ const MainLayout: React.FC = () => {
     else if (path === '/ngo/dashboard' || path === 'ngo-dashboard') targetRoute = '/ngo/dashboard';
     else if (path === '/admin/dashboard' || path === 'admin-dashboard') targetRoute = '/admin/dashboard';
     else if (path === '/research-lab' || path === 'research-lab') targetRoute = '/research-lab';
+    else if (path === '/algorithms' || path === 'algorithms') targetRoute = '/algorithms';
 
     setCurrentRoute(targetRoute);
     try {
@@ -104,10 +109,17 @@ const MainLayout: React.FC = () => {
       );
     }
 
-    // 2. RESEARCH LAB (Publicly accessible for academic review)
+    // 2. ALGORITHMS & PSEUDOCODE (Publicly accessible for MCA evaluation)
+    if (currentRoute === '/algorithms') {
+      return (
+        <AlgorithmWorkbench />
+      );
+    }
+
+    // 3. RESEARCH LAB (Publicly accessible for academic review)
     if (currentRoute === '/research-lab') {
       return (
-        <ResearchLab onNavigateHome={() => navigate('/')} />
+        <ResearchLab onNavigate={navigate} />
       );
     }
 
