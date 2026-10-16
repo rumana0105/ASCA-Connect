@@ -84,9 +84,11 @@ export function evaluateDonationEligibility(input: EligibilityInput): Eligibilit
 
   // Step 2: Physical Density / Sanity Ratio Check
   const ratio = Number((input.approximateWeightKg / input.quantity).toFixed(3));
-  steps.push(`Step 2: Density Ratio Check - Calculated Average Unit Weight = ${input.approximateWeightKg} kg / ${input.quantity} items = ${ratio} kg/item.`);
+  steps.push(`Step 2: Density Ratio Plausibility Check - Calculated Average Unit Weight = ${input.approximateWeightKg} kg / ${input.quantity} items = ${ratio} kg/item.`);
   if (ratio < 0.02 || ratio > 20.0) {
-    steps.push(`Notice: Average weight (${ratio} kg/item) is unusually outside typical household clothing/book standards (0.02 - 20.0 kg/item).`);
+    steps.push(`Advisory Notice: Average unit weight (${ratio} kg/item) falls outside the standard physical envelope [0.02 - 20.0 kg/item]. This check is informational: it alerts the logistics coordinator to potential unit confusion (e.g. grams entered as kilograms) without rejecting genuine bulk donations.`);
+  } else {
+    steps.push(`Validation Passed: Average unit weight (${ratio} kg/item) is within the plausible range [0.02 - 20.0 kg/item] for urban textile and educational materials.`);
   }
 
   // Step 3: Condition Evaluation

@@ -209,6 +209,44 @@ export interface AuditLog {
   details: string;
 }
 
+export interface StarvationMetrics {
+  zeroAllocationNgoRounds: number;     // total count of (ngo, round) where allocated == 0
+  roundsWithZeroAllocation: number;    // number of rounds where at least one NGO got 0
+  ngosWithRepeatedZero: number;        // count of NGOs that experienced >= 2 consecutive 0-allocation rounds
+  maxConsecutiveZeroStreak: number;    // maximum consecutive zero-allocation rounds for any NGO
+  worstOffStreakNgo: string;           // identifier of NGO experiencing longest zero streak
+}
+
+export interface RoundNgoStep {
+  ngoId: string;
+  ngoName: string;
+  tier: string;
+  currentDemand: number;
+  openingShortfall: number;
+  normDemand: number;
+  normShortfall: number;
+  priorityScore: number;
+  rank: number;
+  allocated: number;
+  remainingDemand: number;
+  closingShortfall: number;
+  satisfactionPct: number;
+  isZeroAllocation: boolean;
+  consecutiveZeroStreak: number;
+}
+
+export interface RoundExecutionTrace {
+  roundNumber: number;
+  availableSupply: number;
+  totalRoundDemand: number;
+  totalRoundAllocated: number;
+  supplyUtilizationPct: number;
+  openingAggregateShortfall: number;
+  closingAggregateShortfall: number;
+  shortfallConservationHolds: boolean; // Opening + Demand - Allocated == Closing
+  ngoSteps: RoundNgoStep[];
+}
+
 export type AllocationPolicy = 'FIFO' | 'Greedy Demand' | 'Proportional' | 'ASCA';
 
 export interface PolicyMetricResult {
@@ -219,8 +257,10 @@ export interface PolicyMetricResult {
   peakShortfallDeficit: number; // max shortfall in units/kg
   resourceUtilization: number; // percentage
   roundsCompleted: number;
+  starvationMetrics: StarvationMetrics;
   shortfallOverRounds: { round: number; avgShortfall: number; maxShortfall: number }[];
   tierDistribution: { tier: string; satisfactionRate: number }[];
+  roundTraces: RoundExecutionTrace[];
 }
 
 export interface SimulationConfig {
@@ -230,4 +270,24 @@ export interface SimulationConfig {
   seed: number;
   alpha: number; // 0.5
   beta: number;  // 0.5
+}
+
+export interface SensitivityPoint {
+  beta: number;
+  alpha: number;
+  jainsFairnessIndex: number;
+  worstOffSatisfaction: number;
+  globalMeanSatisfaction: number;
+  peakShortfallDeficit: number;
+  resourceUtilization: number;
+  zeroAllocationNgoRounds: number;
+  maxConsecutiveZeroStreak: number;
+}
+
+export interface SensitivityExperimentResult {
+  points: SensitivityPoint[];
+  bestFairnessBeta: number;
+  bestWorstOffBeta: number;
+  config: SimulationConfig;
+  summaryNotes: string;
 }
