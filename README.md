@@ -8,11 +8,11 @@
 [![Vite](https://img.shields.io/badge/Vite-6.2.3-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-4.3.3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![JFI Guaranteed](https://img.shields.io/badge/Jain's_Fairness_Index-JFI_%E2%89%A5_0.90-success?style=for-the-badge)](https://en.wikipedia.org/wiki/Fairness_measure)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)](#-running-locally)
-[![MCA Project](https://img.shields.io/badge/MCA_Project-2026-orange?style=for-the-badge)](#-academic-project-details)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)](#-quickstart--local-development)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 <p align="center">
-  <b>A research-backed reverse logistics platform solving the starvation of grassroots organizations in sequential donation distribution through temporal shortfall memory.</b>
+  <b>An enterprise-grade reverse logistics platform solving grassroots resource starvation in sequential donation distribution through temporal shortfall memory.</b>
 </p>
 
 [Key Features](#-core-platform-modules) • 
@@ -21,7 +21,7 @@
 [Simulation Benchmarks](#-empirical-benchmarks--fairness-analysis) • 
 [Quickstart](#-quickstart--local-development) • 
 [Demo Credentials](#-pre-configured-demo-credentials) • 
-[Viva Guide](#-mca-viva--mentor-demonstration-guide)
+[Backend Architecture](#-future-production--backend-architecture)
 
 </div>
 
@@ -43,9 +43,8 @@
 - [Directory Structure](#-directory-structure)
 - [Quickstart & Local Development](#-quickstart--local-development)
 - [Pre-Configured Demo Credentials](#-pre-configured-demo-credentials)
-- [MCA Viva & Mentor Demonstration Guide](#-mca-viva--mentor-demonstration-guide)
 - [Future Production & Backend Architecture](#-future-production--backend-architecture)
-- [Academic Project Details](#-academic-project-details)
+- [Theoretical Foundations](#-theoretical-foundations)
 - [License & Acknowledgments](#-license--acknowledgments)
 
 ---
@@ -146,8 +145,8 @@ graph LR
 | **📦 Donor Experience** | Households & Institutions | • Guided step-by-step donation submission for clean clothes and textbooks<br>• Real-time density ratio validation & doorstep truck eligibility scoring<br>• Automated pickup token generation with live status tracking<br>• Verified landfill diversion and carbon footprint reduction certificate |
 | **🏫 NGO Community Portal** | Verified Shelters & Schools | • Category-specific quota and item requirement requests (`Clothes`, `Textbooks`)<br>• Transparent shortfall credit monitoring showing accumulated priority points<br>• Delivery confirmation receipts with verification timestamps<br>• Community demographic impact profile |
 | **🚚 Central Logistics & Admin** | Logistics Coordinators | • Real-time depot capacity tracking, intake verification, and driver routing<br>• Circular sorting management: direct reuse vs. repair vs. mechanical recycling<br>• One-click ASCA batch creation and automated mathematical allocation<br>• Real-time dispatch manifests and storage utilization gauges |
-| **🧪 Research & Simulation Lab** | Researchers & Mentors | • Monte Carlo multi-round sequential simulation engine (up to 100 rounds, 50 NGOs)<br>• Comparative evaluation: **ASCA vs. FIFO vs. Greedy Demand vs. Proportional**<br>• Dynamic sensitivity parameter tuning ($\alpha$ vs $\beta$ weight balance)<br>• Interactive Recharts telemetry: Lorenz curves, starvation streaks, tier parity |
-| **🧮 Algorithm & Pseudocode Workbench** | Evaluators & Students | • Dedicated interactive laboratory at `/algorithms` for live step-by-step execution<br>• 5 formal algorithms with exact pseudocode and mathematical formulas<br>• One-click Viva demonstration presets with boundary case verification<br>• Visual error trapping (zero division guards, negative input rejection) |
+| **🧪 Research & Simulation Lab** | Policy Analysts & Researchers | • Monte Carlo multi-round sequential simulation engine (up to 100 rounds, 50 NGOs)<br>• Comparative evaluation: **ASCA vs. FIFO vs. Greedy Demand vs. Proportional**<br>• Dynamic sensitivity parameter tuning ($\alpha$ vs $\beta$ weight balance)<br>• Interactive Recharts telemetry: Lorenz curves, starvation streaks, tier parity |
+| **🧮 Algorithm & Pseudocode Workbench** | Engineers & Auditors | • Dedicated interactive laboratory at `/algorithms` for live step-by-step execution<br>• 5 formal algorithms with exact pseudocode and mathematical formulas<br>• Pre-configured reference test vectors with boundary case verification<br>• Visual error trapping (zero division guards, negative input rejection) |
 
 ---
 
@@ -297,7 +296,7 @@ $$\text{Surplus Quantity} = \max(0, Q_c - Q_t)$$
 
 $$\text{Vehicle Payload Utilization (\%)} = \left(\frac{Q_c}{V_{\text{cap}}}\right) \times 100, \quad V_{\text{cap}} > 0$$
 
-#### Mentor Specification Demonstration Example
+#### Verified Reference Calculation
 - **Inputs**: $Q_c = 65\text{ kg}$, $Q_t = 100\text{ kg}$, $V_{\text{cap}} = 150\text{ kg}$
 - **Derivation**:
   $$\text{Progress} = \left(\frac{65}{100}\right) \times 100 = 65.0\%$$
@@ -464,7 +463,7 @@ Frontend Architecture:
 
 ### Engineering Design Highlights
 - **Deterministic Math Engine**: Normalization, integer waterfilling, and Jain's Index computations are isolated in `src/utils/algorithms.ts` and `src/utils/asca.ts` with comprehensive unit validation.
-- **Client-Side Simulation Runner**: High-speed Monte Carlo simulations run entirely in browser memory using a seeded Linear Congruential Generator (LCG) for deterministic repeatability across viva demonstrations.
+- **Client-Side Simulation Runner**: High-speed Monte Carlo simulations run entirely in browser memory using a seeded Linear Congruential Generator (LCG) for deterministic repeatability across experiments.
 - **Strict Separation of Concerns**: Context-driven architecture (`AppContext`) decouples state management from UI presentation, facilitating seamless migration to a REST/GraphQL backend.
 
 ---
@@ -489,7 +488,7 @@ ASCA/
 │   │   ├── public/                # Landing page, interactive calculators, impact story
 │   │   └── research/              # Monte Carlo simulation suite, sensitivity heatmaps
 │   ├── config/
-│   │   └── credentials.ts         # Pre-configured demo accounts for viva presentation
+│   │   └── credentials.ts         # Pre-configured demo accounts for presentation
 │   ├── context/
 │   │   └── AppContext.tsx         # Global state provider & localStorage persistence
 │   ├── data/
@@ -570,7 +569,7 @@ npm run preview
 
 ## 🔐 Pre-Configured Demo Credentials
 
-The platform is equipped with instantaneous role switching and pre-loaded accounts for viva evaluation:
+The platform is equipped with instantaneous role switching and pre-loaded accounts for exploration:
 
 | Portal / Role | Username | Password | Purpose & Capabilities |
 | :--- | :--- | :--- | :--- |
@@ -579,49 +578,6 @@ The platform is equipped with instantaneous role switching and pre-loaded accoun
 | **Administrator** | `asca.admin` | `ASCA@2026` | Process reverse logistics batches, execute ASCA allocations, view manifests |
 
 > **Tip:** You can also use the one-click **"Quick Fill"** button located on every login modal to instantly populate valid credentials.
-
----
-
-## 🧭 MCA Viva & Mentor Demonstration Guide
-
-Follow this **5-minute structured walkthrough** during project evaluation:
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                      5-MINUTE VIVA DEMONSTRATION                       │
-├─────────┬───────────────────────────────┬──────────────────────────────┤
-│ Minute  │ Phase & Route                 │ Objective                    │
-├─────────┼───────────────────────────────┼──────────────────────────────┤
-│ 00 - 01 │ Landing Page (`/`)            │ Explain Urban Waste & ASCA   │
-│ 01 - 02 │ Algorithm Workbench (`/algo`) │ Demonstrate Algorithms A - D │
-│ 02 - 03 │ ASCA Allocation Demo          │ Demonstrate Anti-Starvation  │
-│ 03 - 04 │ Research Lab (`/research`)    │ 50-Round Monte Carlo vs FIFO │
-│ 04 - 05 │ Donor & NGO Dashboards        │ End-to-End Reverse Logistics │
-└─────────┴───────────────────────────────┴──────────────────────────────┘
-```
-
-### Step-by-Step Viva Execution
-
-1. **Phase 1: Project Overview (`/`)**
-   - Introduce the dual problems: urban household waste buildup and the starvation of small NGOs under traditional allocation.
-   - Point out the interactive impact counter and reverse logistics timeline.
-
-2. **Phase 2: Algorithm Workbench (`/algorithms`)**
-   - Click **"Algorithm & Pseudocode"** in the top navigation.
-   - **Algorithm C (Logistics Progress)**: Select the **"Mentor Spec (65 kg / 100 kg)"** preset. Click **"Execute Progress Calculation"**. Show the mathematical trace deriving $65\%$ progress, $35\text{ kg}$ remaining, and $43.33\%$ vehicle capacity. Enter `0` in Target to demonstrate dynamic zero-division protection.
-   - **Algorithm A (Eligibility)**: Select **"Doorstep Bulk"** $\rightarrow$ shows automated van dispatch. Select **"Unsuitable Items"** $\rightarrow$ shows rejection due to safety/dignity.
-   - **Algorithm B (Classification)**: Select contaminated items $\rightarrow$ routes to **Quarantine**. Select damaged 100% cotton $\rightarrow$ routes to **Fibre Mill**.
-   - **Algorithm D (Mass Balance)**: Load the $1000\text{ kg}$ batch. Highlight $95\%$ net diversion ($62\%$ reuse, $33\%$ recycling, $5\%$ residue).
-
-3. **Phase 3: ASCA Core Allocation Demonstration**
-   - Scroll to **Algorithm E**.
-   - Show how a small grassroots school with low demand ($30$ items) but high historical shortfall ($70$ units) leapfrogs larger organizations with zero credit.
-   - Show that ASCA achieves $JFI \ge 0.94$, whereas FIFO drops below $0.62$.
-
-4. **Phase 4: Multi-Round Research Simulation (`/research-lab`)**
-   - Run a 50-round simulation with 20 NGOs.
-   - Show the **Starvation Streaks Bar Chart**: FIFO causes an 8-round drought for small NGOs; ASCA keeps starvation at **0**.
-   - Point to the **Sensitivity Matrix** showing the optimal balance around $\alpha = 0.5, \beta = 0.5$.
 
 ---
 
@@ -640,18 +596,22 @@ The project is structured with clean abstractions for instant connection to a pe
 
 ---
 
-## 🎓 Academic Project Details
+## 🔬 Theoretical Foundations
 
-- **Degree Program**: Master of Computer Applications (MCA)
-- **Academic Year**: 2025–2026
-- **Project Title**: *Smart Reverse Logistics System for Urban Clothes and School Books Redistribution and Recycling (ASCA)*
-- **Primary Research Innovation**: Adaptive Shortfall Credit Allocation (ASCA) for Temporal Anti-Starvation in Constrained Sequential Non-Profit Resource Distribution.
-- **Key Methodologies**: Dynamic Priority Weighting, Jain's Fairness Index Optimization, Closed-Loop Reverse Logistics Material Routing.
+The ASCA engine builds upon foundational principles of fair queuing, axiomatic equity metrics, and circular material balance:
+
+1. **Jain's Fairness Index (JFI)**:
+   - Formulated by Raj Jain, Dah-Ming Chiu, and William R. Hawe (*“A Quantitative Measure of Fairness and Discrimination for Resource Allocation in Shared Computer Systems”*, DEC-TR-301, 1984).
+   - $J(x)$ is continuous, scale-independent, symmetric, and bounded strictly within $[0, 1]$. It rigorously measures whether all competing non-profits receive an equitable share relative to their demands.
+2. **Deficit-Weighted Scheduling & Anti-Starvation**:
+   - Adapts principles from Deficit Round Robin (DRR) and Weighted Fair Queuing (WFQ) to discrete non-profit donation logistics, ensuring that chronic shortfalls generate proportional allocation priority in successive distribution rounds.
+3. **Mass Balance & Circular Economy**:
+   - Enforces first-order mass conservation ($\sum Q_{\text{in}} = \sum Q_{\text{out}}$), providing auditable diversion metrics across reuse, mechanical recycling, and sanitary quarantine.
 
 ---
 
 ## 📜 License & Acknowledgments
 
-This project is released under the **MIT License**. See [LICENSE](LICENSE) for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-Developed with dedication to sustainable circular supply chains, educational equity, and mathematical fairness in humanitarian logistics.
+Developed with a commitment to sustainable circular supply chains, educational access, and mathematical fairness in humanitarian logistics.
